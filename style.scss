@@ -1,0 +1,37 @@
+.to-do-container {
+    width: 70vw;
+    margin: 0px auto;
+    background-color: aquamarine;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-text {
+    padding: 10px;
+    width: 50vw;
+}
+
+.add-img{
+    width: 40px;
+}
+
+.button-container{
+    width: 70vw;
+    margin: 0px auto;
+}
+
+.history-box{
+    width: 50vw;
+    margin: 0px auto;
+}
+
+.list-box{
+    background-color: antiquewhite;
+    // padding-top: 10px;
+}
+

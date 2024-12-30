@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+    <div class="to-do-container pt-3 pb-4 mt-5">
+        <h2 class="text text-center">TO DO ..</h2>
+        <div class="wrapper">
+            <input type="text" placeholder="Enter a Task ..." class="input-text">
+            <button class="input-btn" type="submit">
+                <img src="images/add-img.png" alt="add-img" class="add-img p-2"> 
+            </button>
+        </div>      
+    </div>
+    <div class="history-box mt-4">
+        <!-- <div class="list-box d-flex justify-content-center align-items-center gap-md-4 pt-3">
+            <p class="list-text">hi</p>
+            <p class="complete">complate</p>
+            <p class="delete">Delete</p>
+        </div> -->
+        
+    </div>
+    <div class="button-container d-flex justify-content-center gap-5 mt-3">
+        <button class="buttons p-2 p-lg-3 ">All</button>
+        <button class="buttons p-2 p-lg-3">Active</button>
+        <button class="buttons p-2 p-lg-3">Completed</button>
+        <button class="buttons p-2 p-lg-3">Clear Completed</button>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
