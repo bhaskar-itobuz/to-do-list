@@ -32,4 +32,15 @@
 
 .list-box {
   background-color: antiquewhite;
+}
+
+.history-box {
+  max-height: 50vw;
+  overflow-y: scroll;
+}
+
+.buttons:hover {
+  cursor: pointer;
+  color: white;
+  background-color: black;
 }/*# sourceMappingURL=style.css.map */

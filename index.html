@@ -16,25 +16,21 @@
     <div class="to-do-container pt-3 pb-4 mt-5">
         <h2 class="text text-center">TO DO ..</h2>
         <div class="wrapper">
-            <input type="text" placeholder="Enter a Task ..." class="input-text">
+            <form action="#" onsubmit="match()">
+                <input type="text" placeholder="Enter a Task ..." class="input-text">
+            </form>
             <button class="input-btn" type="submit">
                 <img src="images/add-img.png" alt="add-img" class="add-img p-2"> 
             </button>
         </div>      
     </div>
-    <div class="history-box mt-4">
-        <!-- <div class="list-box d-flex justify-content-center align-items-center gap-md-4 pt-3">
-            <p class="list-text">hi</p>
-            <p class="complete">complate</p>
-            <p class="delete">Delete</p>
-        </div> -->
-        
+    <div class="history-box mt-4">     
     </div>
     <div class="button-container d-flex justify-content-center gap-5 mt-3">
-        <button class="buttons p-2 p-lg-3 ">All</button>
-        <button class="buttons p-2 p-lg-3">Active</button>
-        <button class="buttons p-2 p-lg-3">Completed</button>
-        <button class="buttons p-2 p-lg-3">Clear Completed</button>
+        <button class="buttons p-2 p-lg-3 " id="all">All</button>
+        <button class="buttons p-2 p-lg-3" id="active">Active</button>
+        <button class="buttons p-2 p-lg-3" id="complete">Completed</button>
+        <button class="buttons p-2 p-lg-3" id="clear">Clear Completed</button>
     </div>
     <script src="./script.js"></script>
 </body>
