@@ -59,7 +59,6 @@ function create_element() {
 
         if (arr[index].completed === true) {
             textNode.style.textDecoration = "line-through"
-            console.log(arr);
         }
         else {
             textNode.style.textDecoration = "none";
@@ -120,7 +119,6 @@ function activeItem() {
         if (arr[index].completed === false) {
             const newDiv = document.createElement('div');
             const get_value = item.value;
-            console.log(get_value);
             const textNode = document.createElement('p');
             textNode.textContent = get_value;
 
