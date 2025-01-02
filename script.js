@@ -1,234 +1,117 @@
 const input_text = document.getElementsByClassName("input-text")[0];
 const input_btn = document.getElementsByClassName("input-btn")[0];
 const box_container = document.getElementsByClassName("history-box")[0];
-const all_button = document.getElementById("all");
+const display_button = document.getElementById("all");
 const active_button = document.getElementById("active");
 const complete_button = document.getElementById("complete");
 const clear = document.getElementById("clear");
 const arr = [];
-const complete_task = [];
-const delet_task = [];
 
-// function box_element(){
+function create_element() {
+    box_container.innerHTML = "";
+    arr.forEach((item, index) => {
+        const newDiv = document.createElement('div');
+        const get_value = item.value;
+        const textNode = document.createElement('p');
+        textNode.textContent = get_value;
 
-//     const newDiv = document.createElement('div');
-//         const get_value = item.value;
-//         console.log(get_value);
-
-//         const textNode = document.createElement('p');
-//         textNode.textContent = get_value;
-
-//         const complete_img = document.createElement("img");
-//         complete_img.src = "images/complete.png";
-//         complete_img.style.width = '30px';
-//         complete_img.style.marginRight = '10px';
-
-//         const delet_img = document.createElement("img");
-//         delet_img.src = "images/delet.jpg";
-//         delet_img.style.width = '30px';
+        const text_container = document.createElement('div');
+        text_container.appendChild(textNode);
+        text_container.setAttribute("class", "text_container");
 
 
-//         const child_div = document.createElement('div');
-//         child_div.appendChild(complete_img);
-//         complete_img.style.marginLeft = "10px";
-//         delet_img.style.marginRight = "10px";
-//         child_div.appendChild(delet_img);
-//         newDiv.appendChild(textNode);
-//         newDiv.appendChild(child_div);
-//         child_div.style.display = "flex";
-//         box_container.appendChild(newDiv);
-//         newDiv.setAttribute("class", "d-flex gap-5 justify-content-between align-items-center mt-4");
-//         newDiv.style.border = "1px solid black";
-//         newDiv.style.overflowX = "scroll";
-//         textNode.style.padding = "10px";
-//         textNode.style.marginTop = "12px";
-//         input_text.value = "";
+        const complete_button = document.createElement("button");
+        const delet_button = document.createElement("button");
 
-//         complete_img.addEventListener('click', function () {
-//             if (arr[index].completed === false) {
-//                 textNode.style.textDecoration = "line-through"
-//                 arr[index].completed = !arr[index].completed;
-//                 console.log(arr);
-//             }
-//             else {
-//                 arr[index].completed = !arr[index].completed;
-//                 textNode.style.textDecoration = "none";
-//             }
-//         });
+        const complete_img = document.createElement("img");
+        complete_img.src = "images/complete.png";
+        complete_img.style.width = '40px';
 
-//         delet_img.addEventListener('click', function () {
-//             arr.forEach((item, index) => {
-//                 if (item.value === get_value) {
-//                     arr.splice(index, 1);
-//                     box_container.removeChild(newDiv);
-//                 }
-//             });
+        complete_button.appendChild(complete_img);
 
-//             console.log(arr);
-//         });
-// }
+        const delet_img = document.createElement("img");
+        delet_img.src = "images/delet.jpg";
+        delet_img.style.width = '40px';
+        delet_button.appendChild(delet_img);
+
+
+        const child_div = document.createElement('div');
+        child_div.appendChild(complete_button);
+        complete_button.style.marginRight = "10px";
+        delet_button.style.marginRight = "10px";
+        child_div.appendChild(delet_button);
+
+        newDiv.setAttribute("class", "newdiv");
+
+        newDiv.appendChild(text_container);
+        newDiv.appendChild(child_div);
+        newDiv.style.width = "100%";
+        child_div.style.display = "flex";
+        box_container.appendChild(newDiv);
+        newDiv.setAttribute("class", "d-flex gap-5 justify-content-between align-items-center mt-4");
+        newDiv.style.border = "1px solid black";
+
+        text_container.style.width = "90%";
+        text_container.style.overflow = "scroll";
+        textNode.style.padding = " 2px 10px";
+        textNode.style.marginTop = "12px";
+        input_text.value = "";
+
+        if (arr[index].completed === true) {
+            textNode.style.textDecoration = "line-through"
+            console.log(arr);
+        }
+        else {
+            textNode.style.textDecoration = "none";
+        }
+
+        complete_button.setAttribute("onClick", `complete(${index})`);
+        delet_button.setAttribute("onClick", `delet(${index})`);
+
+    });
+}
+
+function complete(index) {
+    arr[index].completed = !arr[index].completed;
+    create_element();
+}
+
+function delet(index) {
+    arr.splice(index, 1);
+    create_element();
+}
 
 function match() {
     const input_val = input_text.value;
-    // const index1= arr.indexOf(val);
-    if(arr.length===0){
-        arr.push({
-            "completed": false,
-            "value": input_val
-        });
+    let count = 0;
+    const empty_check = input_val.trim();
+    if (empty_check.length === 0) {
+        alert("please enter a valid name");
     }
-    else{
-        for(let i=0;i<arr.length;i++){
-            if(arr[i].value===input_val){
-                arr.push({
-                    "completed": false,
-                    "value": input_val
-                });
-    
-            }
-            else {
-                console.log("list is already found");
+    else {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].value === empty_check) {
+                count++;
             }
         }
-    }
 
-    // if (!arr.includes(input_val)) {
-    //     arr.push({
-    //         "completed": false,
-    //         "value": input_val
-    //     });
-
-    // }
-    // else {
-    //     console.log("list is already found");
-    // }
-
-    box_container.innerHTML = "";
-
-    arr.forEach((item, index) => {
-
-        const newDiv = document.createElement('div');
-        const get_value = item.value;
-        console.log(get_value);
-
-        const textNode = document.createElement('p');
-        textNode.textContent = get_value;
-
-        const complete_img = document.createElement("img");
-        complete_img.src = "images/complete.png";
-        complete_img.style.width = '30px';
-        complete_img.style.marginRight = '10px';
-
-        const delet_img = document.createElement("img");
-        delet_img.src = "images/delet.jpg";
-        delet_img.style.width = '30px';
-
-
-        const child_div = document.createElement('div');
-        child_div.appendChild(complete_img);
-        complete_img.style.marginLeft = "10px";
-        delet_img.style.marginRight = "10px";
-        child_div.appendChild(delet_img);
-        newDiv.appendChild(textNode);
-        newDiv.appendChild(child_div);
-        child_div.style.display = "flex";
-        box_container.appendChild(newDiv);
-        newDiv.setAttribute("class", "d-flex gap-5 justify-content-between align-items-center mt-4");
-        newDiv.style.border = "1px solid black";
-        newDiv.style.overflowX = "scroll";
-        textNode.style.padding = "10px";
-        textNode.style.marginTop = "12px";
-        input_text.value = "";
-
-        complete_img.addEventListener('click', function () {
-            if (arr[index].completed === false) {
-                textNode.style.textDecoration = "line-through"
-                arr[index].completed = !arr[index].completed;
-                console.log(arr);
-            }
-            else {
-                arr[index].completed = !arr[index].completed;
-                textNode.style.textDecoration = "none";
-            }
-        });
-
-        delet_img.addEventListener('click', function () {
-            arr.forEach((item, index) => {
-                if (item.value === get_value) {
-                    arr.splice(index, 1);
-                    box_container.removeChild(newDiv);
-                }
+        if (count === 0) {
+            arr.push({
+                "completed": false,
+                "value": empty_check
             });
-
-            console.log(arr);
-        });
-
-    });
+        }
+        else {
+            alert("element is already present");
+        }
+    }
+    create_element();
 
 }
 
-
-
 function showall() {
     box_container.innerHTML = "";
-    arr.forEach((item, index) => {
-        const newDiv = document.createElement('div');
-        const get_value = item.value;
-        console.log(get_value);
-
-        const textNode = document.createElement('p');
-        textNode.textContent = get_value;
-
-        const complete_img = document.createElement("img");
-        complete_img.src = "images/complete.png";
-        complete_img.style.width = '30px';
-        complete_img.style.marginRight = '10px';
-
-        const delet_img = document.createElement("img");
-        delet_img.src = "images/delet.jpg";
-        delet_img.style.width = '30px';
-
-
-        const child_div = document.createElement('div');
-        child_div.appendChild(complete_img);
-        complete_img.style.marginLeft = "10px";
-        delet_img.style.marginRight = "10px";
-        child_div.appendChild(delet_img);
-        newDiv.appendChild(textNode);
-        newDiv.appendChild(child_div);
-        child_div.style.display = "flex";
-        box_container.appendChild(newDiv);
-        newDiv.setAttribute("class", "d-flex gap-5 justify-content-between align-items-center mt-4");
-        newDiv.style.border = "1px solid black";
-        newDiv.style.overflowX = "scroll";
-        textNode.style.padding = "10px";
-        textNode.style.marginTop = "12px";
-        input_text.value = "";
-
-        complete_img.addEventListener('click', function () {
-            if (arr[index].completed === false) {
-                textNode.style.textDecoration = "line-through"
-                arr[index].completed = !arr[index].completed;
-                console.log(arr);
-            }
-            else {
-                arr[index].completed = !arr[index].completed;
-                textNode.style.textDecoration = "none";
-            }
-        });
-
-        delet_img.addEventListener('click', function () {
-            arr.forEach((item, index) => {
-                if (item.value === get_value) {
-                    arr.splice(index, 1);
-                    box_container.removeChild(newDiv);
-                }
-            });
-
-            console.log(arr);
-        });
-
-    });
+    create_element();
 }
 
 function activeitem() {
@@ -238,58 +121,63 @@ function activeitem() {
             const newDiv = document.createElement('div');
             const get_value = item.value;
             console.log(get_value);
-
             const textNode = document.createElement('p');
             textNode.textContent = get_value;
 
+            const text_container = document.createElement('div');
+            text_container.appendChild(textNode);
+            text_container.setAttribute("class", "text_container");
+
+
+            const complete_button = document.createElement("button");
+            const delet_button = document.createElement("button");
+
             const complete_img = document.createElement("img");
             complete_img.src = "images/complete.png";
-            complete_img.style.width = '30px';
-            complete_img.style.marginRight = '10px';
+            complete_img.style.width = '40px';
+
+            complete_button.appendChild(complete_img);
 
             const delet_img = document.createElement("img");
             delet_img.src = "images/delet.jpg";
-            delet_img.style.width = '30px';
+            delet_img.style.width = '40px';
+            delet_button.appendChild(delet_img);
 
 
             const child_div = document.createElement('div');
-            child_div.appendChild(complete_img);
-            complete_img.style.marginLeft = "10px";
-            delet_img.style.marginRight = "10px";
-            child_div.appendChild(delet_img);
-            newDiv.appendChild(textNode);
+            child_div.appendChild(complete_button);
+            complete_button.style.marginRight = "10px";
+            delet_button.style.marginRight = "10px";
+            child_div.appendChild(delet_button);
+
+            newDiv.setAttribute("class", "newdiv");
+
+            newDiv.appendChild(text_container);
             newDiv.appendChild(child_div);
+            newDiv.style.width = "100%";
             child_div.style.display = "flex";
             box_container.appendChild(newDiv);
             newDiv.setAttribute("class", "d-flex gap-5 justify-content-between align-items-center mt-4");
             newDiv.style.border = "1px solid black";
-            newDiv.style.overflowX = "scroll";
-            textNode.style.padding = "10px";
+
+            text_container.style.width = "90%";
+            text_container.style.overflow = "scroll";
+            textNode.style.padding = " 2px 10px";
             textNode.style.marginTop = "12px";
             input_text.value = "";
 
-            complete_img.addEventListener('click', function () {
-                if (arr[index].completed === false) {
-                    textNode.style.textDecoration = "line-through"
-                    arr[index].completed = !arr[index].completed;
-                    console.log(arr);
-                }
-                else {
-                    arr[index].completed = !arr[index].completed;
-                    textNode.style.textDecoration = "none";
-                }
-            });
+            if (arr[index].completed === true) {
+                textNode.style.textDecoration = "line-through"
+            }
+            else {
+                textNode.style.textDecoration = "none";
+            }
 
-            delet_img.addEventListener('click', function () {
-                arr.forEach((item, index) => {
-                    if (item.value === get_value) {
-                        arr.splice(index, 1);
-                        box_container.removeChild(newDiv);
-                    }
-                });
+            complete_button.setAttribute("onClick", `complete(${index})`);
 
-                console.log(arr);
-            });
+
+            delet_button.setAttribute("onClick", `delet(${index})`);
+
 
         }
     });
@@ -301,8 +189,6 @@ function completeTask() {
         if (arr[index].completed === true) {
             const newDiv = document.createElement('div');
             const get_value = item.value;
-            console.log(get_value);
-
             const textNode = document.createElement('p');
             textNode.textContent = get_value;
             newDiv.appendChild(textNode);
@@ -327,11 +213,7 @@ function clearComplete() {
 }
 
 input_btn.addEventListener("click", match);
-
-all_button.addEventListener("click", showall);
-
+display_button.addEventListener("click", showall);
 active_button.addEventListener("click", activeitem);
-
 complete_button.addEventListener("click", completeTask);
-
 clear.addEventListener("click", clearComplete);

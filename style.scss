@@ -1,3 +1,9 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 .to-do-container {
     width: 70vw;
     margin: 0px auto;
@@ -16,33 +22,40 @@
     width: 50vw;
 }
 
-.add-img{
+.add-img {
     width: 40px;
 }
 
-.button-container{
+.button-container {
     width: 70vw;
     margin: 0px auto;
 }
 
-.history-box{
-    width: 50vw;
-    margin: 0px auto;
-}
-
-.list-box{
+.list-box {
     background-color: antiquewhite;
 }
 
-.history-box{
-    max-height: 50vw;
+.history-box {
+    width: 50vw;
+    margin: 0px auto;
+    max-height: 30vw;
     overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
-.buttons{
-    &:hover{
+.buttons {
+    &:hover {
         cursor: pointer;
         color: white;
         background-color: black;
+    }
+}
+
+.text_container {
+    &::-webkit-scrollbar {
+        display: none;
     }
 }
