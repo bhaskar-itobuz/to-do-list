@@ -109,12 +109,12 @@ function match() {
 
 }
 
-function showall() {
+function showAll() {
     box_container.innerHTML = "";
     create_element();
 }
 
-function activeitem() {
+function activeItem() {
     box_container.innerHTML = "";
     arr.forEach((item, index) => {
         if (arr[index].completed === false) {
@@ -213,7 +213,7 @@ function clearComplete() {
 }
 
 input_btn.addEventListener("click", match);
-display_button.addEventListener("click", showall);
-active_button.addEventListener("click", activeitem);
+display_button.addEventListener("click", showAll);
+active_button.addEventListener("click", activeItem);
 complete_button.addEventListener("click", completeTask);
 clear.addEventListener("click", clearComplete);

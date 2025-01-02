@@ -45,6 +45,9 @@
   display: none;
 }
 
+.buttons {
+  border-radius: 10px;
+}
 .buttons:hover {
   cursor: pointer;
   color: white;
