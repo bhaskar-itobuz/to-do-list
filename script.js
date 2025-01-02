@@ -21,7 +21,7 @@ function create_element() {
 
 
         const complete_button = document.createElement("button");
-        const delet_button = document.createElement("button");
+        const delete_button = document.createElement("button");
 
         const complete_img = document.createElement("img");
         complete_img.src = "images/complete.png";
@@ -29,17 +29,17 @@ function create_element() {
 
         complete_button.appendChild(complete_img);
 
-        const delet_img = document.createElement("img");
-        delet_img.src = "images/delete.jpg";
-        delet_img.style.width = '40px';
-        delet_button.appendChild(delet_img);
+        const delete_img = document.createElement("img");
+        delete_img.src = "images/delete.jpg";
+        delete_img.style.width = '40px';
+        delete_button.appendChild(delete_img);
 
 
         const child_div = document.createElement('div');
         child_div.appendChild(complete_button);
         complete_button.style.marginRight = "10px";
-        delet_button.style.marginRight = "10px";
-        child_div.appendChild(delet_button);
+        delete_button.style.marginRight = "10px";
+        child_div.appendChild(delete_button);
 
         newDiv.setAttribute("class", "newdiv");
 
@@ -66,7 +66,7 @@ function create_element() {
         }
 
         complete_button.setAttribute("onClick", `complete(${index})`);
-        delet_button.setAttribute("onClick", `delet(${index})`);
+        delete_button.setAttribute("onClick", `deleteAt(${index})`);
 
     });
 }
@@ -76,7 +76,7 @@ function complete(index) {
     create_element();
 }
 
-function delet(index) {
+function deleteAt(index) {
     arr.splice(index, 1);
     create_element();
 }
@@ -130,7 +130,7 @@ function activeItem() {
 
 
             const complete_button = document.createElement("button");
-            const delet_button = document.createElement("button");
+            const delete_button = document.createElement("button");
 
             const complete_img = document.createElement("img");
             complete_img.src = "images/complete.png";
@@ -138,17 +138,17 @@ function activeItem() {
 
             complete_button.appendChild(complete_img);
 
-            const delet_img = document.createElement("img");
-            delet_img.src = "images/delete.jpg";
-            delet_img.style.width = '40px';
-            delet_button.appendChild(delet_img);
+            const delete_img = document.createElement("img");
+            delete_img.src = "images/delete.jpg";
+            delete_img.style.width = '40px';
+            delete_button.appendChild(delete_img);
 
 
             const child_div = document.createElement('div');
             child_div.appendChild(complete_button);
             complete_button.style.marginRight = "10px";
-            delet_button.style.marginRight = "10px";
-            child_div.appendChild(delet_button);
+            delete_button.style.marginRight = "10px";
+            child_div.appendChild(delete_button);
 
             newDiv.setAttribute("class", "newdiv");
 
@@ -175,10 +175,7 @@ function activeItem() {
 
             complete_button.setAttribute("onClick", `complete(${index})`);
 
-
-            delet_button.setAttribute("onClick", `delet(${index})`);
-
-
+            delete_button.setAttribute("onClick", `deleteAt(${index})`);
         }
     });
 }
