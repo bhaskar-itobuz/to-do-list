@@ -30,7 +30,7 @@ function create_element() {
         complete_button.appendChild(complete_img);
 
         const delet_img = document.createElement("img");
-        delet_img.src = "images/delet.jpg";
+        delet_img.src = "images/delete.jpg";
         delet_img.style.width = '40px';
         delet_button.appendChild(delet_img);
 
@@ -139,7 +139,7 @@ function activeitem() {
             complete_button.appendChild(complete_img);
 
             const delet_img = document.createElement("img");
-            delet_img.src = "images/delet.jpg";
+            delet_img.src = "images/delete.jpg";
             delet_img.style.width = '40px';
             delet_button.appendChild(delet_img);
 
